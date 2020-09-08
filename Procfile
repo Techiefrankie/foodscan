@@ -1,1 +1,1 @@
-web: gunicorn --chdir ./foodie foodie.wsgi --log-file -
+web: gunicorn --chdir ./recommender recommender.wsgi --log-file -
