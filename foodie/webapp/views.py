@@ -1,12 +1,9 @@
-from pyexpat import model
-
-# import torch
 from django.shortcuts import render
 
 import os
 import random
 
-from .models import Foodservoire, Activity, Disease, Photo
+from .models import Photo
 
 
 def home(request):
