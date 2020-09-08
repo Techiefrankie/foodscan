@@ -62,13 +62,6 @@ class Disease(models.Model):
         return self.name
 
 
-class Correction(models.Model):
-    sn = models.IntegerField()
-    old_name = models.CharField(max_length=50)
-    suggested_name = models.CharField(max_length=50)
-    food_img = models.CharField(max_length=50)
-
-
 class Photo(models.Model):
     title = models.CharField(max_length=100)
     img = models.ImageField(upload_to='images/')
