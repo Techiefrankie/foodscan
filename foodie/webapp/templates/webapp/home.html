@@ -7,12 +7,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col mr-4">
-                        <h2 class="my-4"> Yes, I want To Eat Healthy</h2>
-                        <img src="{% static 'webapp/images/yam_porridge.jpg' %}" width=80% class="border border-success rounded" />
+                        <h2 class="my-4">Get your best look.</h2>
+                        <img src="{% static 'webapp/images/sample.jpeg' %}" width="300px" height="300px" class="border border-success rounded" />
                         <p class='my-4'>
-                            A balanced diet gives your body the nutrients it needs to function correctly.
-                            To get the nutrition you need, and keep your body in top notch condition, you need
-                            to analyze the diet information of your meal to ascertain its status.
+                            Get  a face lift with our makeup recommendation system.
                         </p>
 
                     </div>
@@ -22,17 +20,14 @@
                             Get Started
                         </button>
                         <hr/>
-
-                        <ul class="list-group">
-                          <li class="list-group-item"><b>Analysis of your meal</b></li>
-                          <li class="list-group-item list-group-item-primary">Food class: <span class="label-values">{{name}}</span> </li>
-                          <li class="list-group-item list-group-item-success">Diet: <span class="label-values">{{balanced}}</span> </li>
-                          <li class="list-group-item list-group-item-secondary">Description: <span class="label-values">{{description}}</span> </li>
-                          <li class="list-group-item list-group-item-warning">Complement: <span class="label-values">{{complement}}</span></li>
-                          <li class="list-group-item list-group-item-danger">Disease Condition: <span class="label-values">{{disease}}</span></li>
-                          <li class="list-group-item list-group-item-info">Additional Information: <span class="label-values">{{calories}}</span></li>
-                        </ul>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{ photo.img.url }}" height="250px" width="250px"/>{{before}}
+                            </div>
+                            <div class="col-md-6">
+                                <img src="/static/webapp/images/after/{{ recommendation }}" height="250px" width="250px"/>{{after}}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,81 +40,38 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Getting started towards a healthier lifestyle.</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Get a makeup recommendation.</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form method="post" action="{% url 'upload_photo' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'recommend' %}" enctype="multipart/form-data">
         {% csrf_token %}
       <div class="modal-body">
 
-      <!-- activity level and disease condition -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="activity">Activity Level</label>
-                <select name="activity" class="form-control" required>
-                    <option>choose one</option>
-                    <option value="Sedentary">Sedentary</option>
-                    <option value="Moderately Active">Moderately Active</option>
-                    <option value="Active">Active</option>
-                </select>
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="age">Disease Condition</label>
-                <select name="disease" class="form-control">
-                    <option value="null">optional</option>
-                    <option value="DBM">Diabetes Mellitus</option>
-                    <option value="CKD">Chronic Kidney Disease</option>
-                    <option value="TBC">Tuberculosis</option>
-                </select>
-            </div>
-        </div>
-
         <!-- age and height -->
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="category">Category</label>
-                <select name="category" class="form-control" required>
-                    <option>Select category</option>
-                    <option value="Build Up">I want to add weight</option>
-                    <option value="Maintenance">I want to maintain my weight</option>
-                    <option value="Reducing">I want to reduce my weight</option>
+            <div class="form-group col-md-12">
+                <label for="occasion">Occasion</label>
+                <select name="occasion" class="form-control" required>
+                    <option>Select occasion</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Bridal Shower">Bridal Shower</option>
+                    <option value="Wedding">IWedding</option>
                 </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="height">Height(ft)</label>
-                <input type="number" class="form-control" id="height" name="height" required/>
-            </div>
-        </div>
-
-        <!-- Gender  and age -->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="gender">Gender</label>
-                <select name="gender" class="form-control" required>
-                    <option>Select gender</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" name="age"/>
             </div>
         </div>
 
         <!-- upload food -->
         <div class="form-group">
-            <label for="photo">Image of Food</label>
+            <label for="photo">Face Image</label>
             <input type="file" class="form-control" name="photo" id="photo" required/>
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Get Recommendation</button>
       </div>
     </form>
     </div>
