@@ -4,7 +4,6 @@
 secret_key.py
 
 # DIRECTORIES
-**/**/__pycache__
 .vscode/
 .pytest_cache
 src.egg-info
