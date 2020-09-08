@@ -23,7 +23,7 @@ from webapp.views import home
 urlpatterns = [
     path('', home, name='home'),
     path('admin/', admin.site.urls),
-    path('foodie/', include('webapp.urls'))
+    path('makeup/', include('webapp.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
